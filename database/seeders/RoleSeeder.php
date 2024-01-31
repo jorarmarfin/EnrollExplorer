@@ -16,9 +16,10 @@ class RoleSeeder extends Seeder
     {
         Role::create(['name' => 'admin']);
         $systems = Role::create(['name' => 'systems']);
-        $others = Role::create(['name' => 'Others']);
+        $others = Role::create(['name' => 'others']);
 
         Permission::create(['name' => 'Buscar ficha'])->syncRoles([$systems,$others]);
+        Permission::create(['name' => 'Gestionar ficha'])->syncRoles([$systems]);
         Permission::create(['name' => 'Crear ficha'])->syncRoles([$systems]);
         Permission::create(['name' => 'Editar ficha'])->syncRoles([$systems]);
         Permission::create(['name' => 'Eliminar ficha'])->syncRoles([$systems]);

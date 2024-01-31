@@ -26,7 +26,14 @@ class UserSeeder extends Seeder
             'username'=> 'sistemas',
             'email'=> 'sistemas@gmail.com',
             'password'=> Hash::make('321654987'),
-        ])->assignRole('admin');
+        ])->assignRole('systems');
+
+        User::Create([
+            'name'=> 'prueba',
+            'username'=> 'prueba',
+            'email'=> 'prueba@gmail.com',
+            'password'=> Hash::make('123456789'),
+        ])->assignRole('others');
 
     }
 }

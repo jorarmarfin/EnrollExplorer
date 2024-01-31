@@ -22,6 +22,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('admin/fichas',\App\Livewire\Admin\LiveAdminFicha::class)
+    ->middleware(['auth', 'verified'])
+    ->name('admin.fichas');
+
+Route::get('/download-pdf/{filename}', 'PdfController@download')
+    ->middleware(['auth', 'verified'])
+    ->name('download.pdf');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

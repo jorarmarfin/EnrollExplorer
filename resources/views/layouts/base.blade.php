@@ -327,21 +327,11 @@
 <!--begin::Custom Javascript(used for this page only)-->
 @yield('scripts')
 <script>
-    livewire.on('goTop', () => {
+    Livewire.on('goTop', () => {
         const topOfPage = document.body;
         topOfPage.scrollIntoView({ behavior: "smooth" });
     })
-    livewire.on('alert', (msj,icon) => {
-                Swal.fire({
-                    text: msj,
-                    icon: icon,
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok",
-                    customClass: {
-                        confirmButton: "btn btn-primary"
-                    }
-                });
-            })
+
 </script>
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
