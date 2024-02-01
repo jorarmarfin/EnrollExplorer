@@ -26,6 +26,10 @@ Route::get('admin/fichas',\App\Livewire\Admin\LiveAdminFicha::class)
     ->middleware(['auth', 'verified'])
     ->name('admin.fichas');
 
+Route::get('admin/usuarios',\App\Livewire\Admin\LiveAdminUsuarios::class)
+    ->middleware(['auth', 'verified'])
+    ->name('admin.usuarios');
+
 Route::get('/download-pdf/{filename}', 'PdfController@download')
     ->middleware(['auth', 'verified'])
     ->name('download.pdf');

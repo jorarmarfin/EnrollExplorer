@@ -20,6 +20,7 @@
             <x-menu-item>
                 <x-slot:title>Acciones</x-slot:title>
                 <x-slot:icon><i class="bi bi-list-check fs-2x"></i></x-slot:icon>
+                <x-menu-sub-item nombre="Gestión usuarios" url="{{route('admin.usuarios')}}"/>
                 <x-menu-sub-item nombre="Insertar una ficha" url="{{route('admin.fichas')}}"/>
             </x-menu-item>
             <!--end:Menu link-->
