@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('lawyers', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
+            $table->string('codigo')->unique();
             $table->string('dni',8)->unique();
             $table->string('paterno',50)->nullable();
             $table->string('materno',50)->nullable();
             $table->string('nombres',50)->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->timestamps();
         });
     }
 

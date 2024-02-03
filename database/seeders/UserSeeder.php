@@ -29,11 +29,18 @@ class UserSeeder extends Seeder
         ])->assignRole('systems');
 
         User::Create([
-            'name'=> 'prueba',
-            'username'=> 'prueba',
-            'email'=> 'prueba@gmail.com',
+            'name'=> 'Editor',
+            'username'=> 'editor',
+            'email'=> 'editor@gmail.com',
             'password'=> Hash::make('123456789'),
-        ])->assignRole('others');
+        ])->assignRole('editor');
+
+        User::Create([
+            'name'=> 'lectura',
+            'username'=> 'lectura',
+            'email'=> 'lectura@gmail.com',
+            'password'=> Hash::make('123456789'),
+        ])->assignRole('viewer');
 
     }
 }

@@ -330,6 +330,17 @@
     Livewire.on('goTop', () => {
         const topOfPage = document.body;
         topOfPage.scrollIntoView({ behavior: "smooth" });
+    });
+    Livewire.on('alert', (event) => {
+        Swal.fire({
+            text: event.params.message,
+            icon: event.params.icon,
+            buttonsStyling: false,
+            confirmButtonText: "Ok",
+            customClass: {
+                confirmButton: "btn btn-primary"
+            }
+        });
     })
 
 </script>

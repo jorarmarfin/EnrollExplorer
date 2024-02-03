@@ -4,14 +4,18 @@ namespace App\Livewire\Admin;
 
 use App\Livewire\Forms\LawyerForm;
 use App\Models\Lawyer;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class LiveAdminFicha extends Component
 {
+    use WithFileUploads;
     public LawyerForm $form;
-    public $cantidad=0;
-    public $showCreate = true;
-    public $showEdit = false;
+    public int $cantidad=0;
+    public bool $showCreate = true;
+    public bool $showEdit = false;
+
     public function render()
     {
         $this->cantidad = Lawyer::count();
@@ -22,9 +26,15 @@ class LiveAdminFicha extends Component
             ->section('content')
             ;
     }
-    public function save()
+    public function save():void
     {
-        if($this->showCreate)$this->form->store();
+        if($this->showCreate) {
+            $this->form->store();
+            $this->dispatch('alert', params: [
+                'icon'   => 'success',
+                'message' => 'Se ha guardado el registro correctamente.',
+            ]);
+        }
         else {
             $this->form->update();
             $this->showCreate = true;
@@ -34,13 +44,15 @@ class LiveAdminFicha extends Component
     }
     public function getLista()
     {
-        return Lawyer::orderBy('id','desc')->take(20)->get();
+        return (Auth::user()->hasRole(['admin', 'systems']))
+            ?Lawyer::orderBy('id','desc')->take(20)->get()
+            :Lawyer::where('user_id', Auth::id())->orderBy('id','desc')->take(20)->get();
     }
-    public function delete($id)
+    public function delete($id):void
     {
         Lawyer::destroy($id);
     }
-    public function edit($id)
+    public function edit($id):void
     {
         $this->form->setData(Lawyer::find($id));
         $this->showCreate = false;

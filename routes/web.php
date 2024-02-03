@@ -30,6 +30,14 @@ Route::get('admin/usuarios',\App\Livewire\Admin\LiveAdminUsuarios::class)
     ->middleware(['auth', 'verified'])
     ->name('admin.usuarios');
 
+
+Route::controller(\App\Http\Controllers\Admin\UserStatisticsController::class)
+    ->middleware(['auth', 'verified'])
+    ->prefix('admin/estadisticas')
+    ->group(function () {
+        Route::get('/', 'index')->name('admin.estadisticas');
+    });
+
 Route::get('/download-pdf/{filename}', 'PdfController@download')
     ->middleware(['auth', 'verified'])
     ->name('download.pdf');

@@ -15,12 +15,15 @@
                 <!--end:Menu link-->
             </a>
             <!--end:Menu item-->
-            @can('Gestionar ficha')
+            @can('Ver menu')
             <!--begin:Menu item-->
             <x-menu-item>
                 <x-slot:title>Acciones</x-slot:title>
                 <x-slot:icon><i class="bi bi-list-check fs-2x"></i></x-slot:icon>
-                <x-menu-sub-item nombre="Gestión usuarios" url="{{route('admin.usuarios')}}"/>
+                @can('Gestionar usuarios')
+                    <x-menu-sub-item nombre="Gestión usuarios" url="{{route('admin.usuarios')}}"/>
+                    <x-menu-sub-item nombre="ver Estadísticas" url="{{route('admin.estadisticas')}}"/>
+                @endcan
                 <x-menu-sub-item nombre="Insertar una ficha" url="{{route('admin.fichas')}}"/>
             </x-menu-item>
             <!--end:Menu link-->

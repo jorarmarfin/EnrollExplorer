@@ -22,7 +22,7 @@
                     @error('form.password') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-md-2">
-                    {!! Form::select('role', ['systems' => 'Sistemas', 'others' => 'Lectura'], null,
+                    {!! Form::select('role', ['systems' => 'Sistemas', 'editor' => 'Editor', 'viewer' => 'Lectura'], null,
                         ['placeholder' => 'Seleccionar Rol','wire:model'=>'form.role','class'=>'form-select']) !!}
                     @error('form.role') <span class="error">{{ $message }}</span> @enderror
                 </div>
