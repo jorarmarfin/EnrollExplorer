@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+    web:
+        container_name: srv-apache-cal
+        image: jorarmarfin/apache-php:latest
+        volumes:
+            - ./:/var/www
+        ports:
+            - 9001:80
+        restart: always
+        depends_on:
+            - db
+        networks:
+            - net-apache
+    db:
+        container_name: srv-mysql-cal
+        image: mysql:5.7
+        environment:
+            - MYSQL_ROOT_PASSWORD=zatEed$Swewd2
+            - MYSQL_DATABASE=laravel
+            - MYSQL_USER=laravel
+            - MYSQL_PASSWORD=laravel
+        volumes:
+            - ./mysql/data:/var/lib/mysql
+            - ./mysql/conf:/etc/mysql/conf.d
+            - ./mysql/backup:/backup
+        restart: always
+        networks:
+            - net-apache
+    adminer:
+        container_name: srv-adminer-cal
+        image: adminer:latest
+        ports:
+            - 9002:8080
+        restart: always
+        networks:
+            - net-apache
+networks:
+    net-apache:
