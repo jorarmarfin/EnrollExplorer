@@ -16,7 +16,7 @@ services:
         container_name: srv-mysql-cal
         image: mysql:5.7
         environment:
-            - MYSQL_ROOT_PASSWORD=zatEed$Swewd2
+            - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
             - MYSQL_DATABASE=laravel
             - MYSQL_USER=laravel
             - MYSQL_PASSWORD=laravel
