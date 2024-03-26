@@ -63,7 +63,7 @@ class LawyerForm extends Form
         $this->validate($rules);
         $this->user_id = Auth::id();
         $this->lawyer->update($this->all());
-        $this->reset();
+        $this->reset(['codigo','dni','paterno','materno','nombres','escaneado']);
     }
 
 }
