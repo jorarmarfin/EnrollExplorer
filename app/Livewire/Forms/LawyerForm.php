@@ -61,6 +61,7 @@ class LawyerForm extends Form
             'nombres' => 'nullable|max:50',
         ];
         $this->validate($rules);
+        $this->user_id = Auth::id();
         $this->lawyer->update($this->all());
         $this->reset();
     }
